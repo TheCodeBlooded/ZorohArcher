@@ -2,15 +2,25 @@ PotionEffects:
   '1':
     Color: "GRAY"
     PotionEffect: "WITHER"
+    Time: 3
+    Strength: 1
   '2':
     Color: "GREEN"
     PotionEffect: "POISON"
+    Time: 3
+    Strength: 2
   '3':
     Color: "BLUE"
     PotionEffect: "SLOWNESS"
+    Time: 3
+    Strength: 1
   '4':
     Color: "BLACK"
     PotionEffect: "BLINDNESS"
+    Time: 3
+    Strength: 1
   '5':
     Color: "RED"
     PotionEffect: "HUNGER"
+    Time: 3
+    Strength: 1

@@ -25,7 +25,7 @@ import java.util.UUID;
  */
 public class ZorohArcher extends JavaPlugin implements Listener {
 
-    private HashMap<DyeColor, PotionEffectType> potionEffects = new HashMap<>();
+    private HashMap<DyeColor, PotionEffect> potionEffects = new HashMap<>();
 
     private HashMap<UUID, PlayerProfile> playerProfiles = new HashMap<>();
 
@@ -41,7 +41,7 @@ public class ZorohArcher extends JavaPlugin implements Listener {
             PotionEffectType effectType = PotionEffectType.getByName(this.getConfig().getString("PotionEffects." + key + ".PotionEffect"));
 
             if(color != null && effectType != null)
-                this.potionEffects.put(color, effectType);
+                this.potionEffects.put(color, new PotionEffect(effectType, this.getConfig().getInt("Time") * 20, this.getConfig().getInt("Strength")));
         });
 
         this.getServer().getOnlinePlayers().forEach(player ->
@@ -100,7 +100,7 @@ public class ZorohArcher extends JavaPlugin implements Listener {
 
             if(armorColor != null) {
                 if(this.potionEffects.containsKey(armorColor)) {
-                    PotionEffectType potionEffectType = this.potionEffects.get(armorColor);
+                    PotionEffect potionEffect = this.potionEffects.get(armorColor);
 
                     if(!(this.playerProfiles.containsKey(player.getUniqueId())))
                         this.playerProfiles.put(player.getUniqueId(), new PlayerProfile(player));
@@ -108,11 +108,11 @@ public class ZorohArcher extends JavaPlugin implements Listener {
                     PlayerProfile playerProfile = this.playerProfiles.get(player.getUniqueId());
 
                     if(playerProfile.elapsed()) {
-                        player.addPotionEffect(new PotionEffect(potionEffectType, 60, 1));
+                        player.addPotionEffect(potionEffect);
 
                         playerProfile.setLastTagged(System.currentTimeMillis());
 
-                        playerProfile.setPotionEffectType(potionEffectType);
+                        playerProfile.setPotionEffectType(potionEffect.getType());
                     }
                 }
             }
