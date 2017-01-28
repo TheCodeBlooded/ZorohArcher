@@ -1,0 +1,16 @@
+PotionEffects:
+  '1':
+    Color: "GRAY"
+    PotionEffect: "WITHER"
+  '2':
+    Color: "GREEN"
+    PotionEffect: "POISON"
+  '3':
+    Color: "BLUE"
+    PotionEffect: "SLOWNESS"
+  '4':
+    Color: "BLACK"
+    PotionEffect: "BLINDNESS"
+  '5':
+    Color: "RED"
+    PotionEffect: "HUNGER"
